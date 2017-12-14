@@ -2,7 +2,7 @@
 
 `elm-colormaps` is a collection of high-quality colormaps that are intended for data visualization and scientific plotting.
 
-For now it mainly provides a port of the four fantastic colormaps ('magma', 'inferno', 'plasma', and 'viridis') are included in matplotlib since version 1.5. They are "perceptually uniform", which means that to the human eye, the difference between 0.1 and 0.3 should appear the same as the difference between 0.6 and 0.8. They are colorblind friendly and can be printed out in grayscale with very little loss of information.
+For now it mainly provides a port of the four fantastic colormaps (`magma`, `inferno`, `plasma`, and `viridis`) are included in matplotlib since version 1.5. They are "perceptually uniform", which means that to the human eye, the difference between 0.1 and 0.3 should appear the same as the difference between 0.6 and 0.8. They are colorblind friendly and can be printed out in grayscale with very little loss of information.
 
 --x the 4 colormaps
 
