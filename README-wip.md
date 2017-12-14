@@ -1,6 +1,5 @@
 # Elm Colormaps
 
-
 ## todo, examples directory:
 
 -- short tutorial
