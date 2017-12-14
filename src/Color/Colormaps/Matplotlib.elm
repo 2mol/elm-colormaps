@@ -61,7 +61,7 @@ to256 : ( Float, Float, Float ) -> ( Int, Int, Int )
 to256 ( a, b, c ) =
     let
         scale x =
-            round x * 255
+            round (x * 255)
     in
         ( scale a, scale b, scale c )
 
