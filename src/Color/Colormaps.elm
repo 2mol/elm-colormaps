@@ -1,12 +1,24 @@
 module Color.Colormaps
     exposing
-        ( magma
+        ( Colormap
+        , fromData
+        , magma
         , inferno
         , plasma
         , viridis
         )
 
 {-|
+
+
+# Colormap
+
+@docs Colormap
+
+
+# fromData
+
+@docs fromData
 
 
 # Magma
@@ -35,12 +47,13 @@ import Color exposing (Color, rgb)
 import Color.Colormaps.Matplotlib as MPL
 
 
+{-| -}
 type alias Colormap =
     Float -> Color
 
 
 {-| -}
-fromData : Dict Int ( Int, Int, Int ) -> Float -> Color
+fromData : Dict Int ( Int, Int, Int ) -> Colormap
 fromData colorData t =
     let
         keys =
