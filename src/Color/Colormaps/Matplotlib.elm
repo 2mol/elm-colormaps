@@ -27,34 +27,22 @@ import Dict exposing (Dict, fromList)
 
 magmaData : Dict Int ( Int, Int, Int )
 magmaData =
-    magmaData_
-        |> List.map to256
-        |> List.indexedMap (,)
-        |> fromList
+    readMPLData magmaData_
 
 
 infernoData : Dict Int ( Int, Int, Int )
 infernoData =
-    infernoData_
-        |> List.map to256
-        |> List.indexedMap (,)
-        |> fromList
+    readMPLData infernoData_
 
 
 plasmaData : Dict Int ( Int, Int, Int )
 plasmaData =
-    plasmaData_
-        |> List.map to256
-        |> List.indexedMap (,)
-        |> fromList
+    readMPLData plasmaData_
 
 
 viridisData : Dict Int ( Int, Int, Int )
 viridisData =
-    viridisData_
-        |> List.map to256
-        |> List.indexedMap (,)
-        |> fromList
+    readMPLData viridisData_
 
 
 to256 : ( Float, Float, Float ) -> ( Int, Int, Int )
@@ -64,6 +52,14 @@ to256 ( a, b, c ) =
             round (x * 255)
     in
         ( scale a, scale b, scale c )
+
+
+readMPLData : List ( Float, Float, Float ) -> Dict Int ( Int, Int, Int )
+readMPLData tupleList =
+    tupleList
+        |> List.map to256
+        |> List.indexedMap (,)
+        |> fromList
 
 
 magmaData_ : List ( Float, Float, Float )
