@@ -1,25 +1,35 @@
-module ExampleGradients exposing (viewColormap)
+module ExampleGradients exposing (gradients)
 
-import Html exposing (Html, text, div, span)
+import Html exposing (Html, div, span)
 import Html.Attributes exposing (style)
 import Color exposing (toRgb)
-import Color.Colormaps exposing (Colormap)
+import Color.Colormaps as CM
 
 
-viewColormap : Colormap -> Html msg
-viewColormap cm =
+gradients : List (Html msg)
+gradients =
+    List.map fullColormap
+        [ CM.magma
+        , CM.inferno
+        , CM.plasma
+        , CM.viridis
+        ]
+
+
+fullColormap : CM.Colormap -> Html msg
+fullColormap colorMap =
     List.range 0 255
         |> List.map toFloat
         |> List.map (\x -> x / 255)
-        |> List.map (\x -> span [ colorspanStyle cm x ] [])
+        |> List.map (\x -> span [ colorSlice colorMap x ] [])
         |> div []
 
 
-colorspanStyle : Colormap -> Float -> Html.Attribute msg
-colorspanStyle cm x =
+colorSlice : CM.Colormap -> Float -> Html.Attribute msg
+colorSlice colorMap x =
     let
         { red, green, blue } =
-            cm x |> toRgb
+            colorMap x |> toRgb
 
         rgbString =
             [ red, green, blue ]
