@@ -1,4 +1,4 @@
-module ExampleElmCss exposing (elements)
+module ExampleElmCss exposing (cssElements)
 
 import Css
 import Color
@@ -9,13 +9,13 @@ import Html.Styled.Attributes exposing (css)
 import Css exposing (..)
 
 
-elements : List (CoreHtml.Html msg)
-elements =
-    List.map toUnstyled cssElements
-
-
-cssElements : List (Html msg)
+cssElements : List (CoreHtml.Html msg)
 cssElements =
+    List.map toUnstyled cssElements_
+
+
+cssElements_ : List (Html msg)
+cssElements_ =
     List.range 0 10
         |> List.map (\x -> x * 10)
         |> List.map drawPercentageBox

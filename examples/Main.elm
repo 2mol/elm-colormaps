@@ -7,8 +7,8 @@ import Html.Attributes exposing (style)
 -- example modules:
 
 import ExampleGradients exposing (fullColormaps)
-import ExampleSvg exposing (drawing)
-import ExampleElmCss exposing (elements)
+import ExampleElmCss exposing (cssElements)
+import ExampleCustom exposing (customColormap)
 
 
 main : Html msg
@@ -16,10 +16,8 @@ main =
     div [ style [ ( "padding-left", "10px" ) ] ]
         [ h3 [] [ text "full colormaps" ]
         , div [] fullColormaps
-        , h3 [] [ text "svg" ]
-        , div [] [ drawing ]
         , h3 [] [ text "elm-css interop" ]
-        , div [] elements
+        , div [] cssElements
         , h3 [] [ text "custom colormap" ]
         , div [] []
         ]
