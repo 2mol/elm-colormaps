@@ -12,7 +12,7 @@ viewColormap cm =
         |> List.map toFloat
         |> List.map (\x -> x / 255)
         |> List.map (\x -> span [ colorspanStyle cm x ] [])
-        |> div [ style [ ( "clear", "both" ), ( "padding", "5px" ) ] ]
+        |> div []
 
 
 colorspanStyle : Colormap -> Float -> Html.Attribute msg
@@ -30,5 +30,5 @@ colorspanStyle cm x =
             [ ( "backgroundColor", "rgb(" ++ rgbString ++ ")" )
             , ( "height", "32px" )
             , ( "width", "1px" )
-            , ( "float", "left" )
+            , ( "display", "inline-block" )
             ]

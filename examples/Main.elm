@@ -1,6 +1,6 @@
 module Main exposing (main)
 
-import Html exposing (Html, div)
+import Html exposing (Html, div, text, h3)
 import Color.Colormaps as CM
 
 
@@ -9,8 +9,8 @@ import Color.Colormaps as CM
 import ExampleGradients exposing (viewColormap)
 
 
-main : Html msg
-main =
+gradients : Html msg
+gradients =
     div [] <|
         List.map viewColormap
             [ CM.magma
@@ -18,3 +18,14 @@ main =
             , CM.plasma
             , CM.viridis
             ]
+
+
+main : Html msg
+main =
+    div []
+        [ h3 [] [ text "full gradients" ]
+        , gradients
+        , h3 [] [ text "svg" ]
+        , h3 [] [ text "elm-css interop" ]
+        , h3 [] [ text "custom colormap" ]
+        ]
