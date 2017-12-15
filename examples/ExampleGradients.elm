@@ -1,4 +1,4 @@
-module ExampleGradients exposing (gradients)
+module ExampleGradients exposing (fullColormaps)
 
 import Html exposing (Html, div, span)
 import Html.Attributes exposing (style)
@@ -6,8 +6,8 @@ import Color exposing (toRgb)
 import Color.Colormaps as CM
 
 
-gradients : List (Html msg)
-gradients =
+fullColormaps : List (Html msg)
+fullColormaps =
     List.map fullColormap
         [ CM.magma
         , CM.inferno
