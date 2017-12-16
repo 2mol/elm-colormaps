@@ -1,19 +1,9 @@
-module ExampleGradients exposing (fullColormaps)
+module ExampleGradients exposing (fullColormap)
 
 import Html exposing (Html, div, span)
 import Html.Attributes exposing (style)
 import Color.Convert exposing (colorToHex)
 import Color.Colormaps as CM
-
-
-fullColormaps : List (Html msg)
-fullColormaps =
-    List.map fullColormap
-        [ CM.magma
-        , CM.inferno
-        , CM.plasma
-        , CM.viridis
-        ]
 
 
 fullColormap : CM.Colormap -> Html msg
