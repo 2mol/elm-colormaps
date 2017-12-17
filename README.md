@@ -4,13 +4,27 @@
 
 For now it mainly provides a port of the four fantastic colormaps (`magma`, `inferno`, `plasma`, and `viridis`) that are included in matplotlib since version 1.5. They are perceptually uniform, colorblind friendly and can be printed out in grayscale with minimal loss of information.
 
---x the 4 colormaps
+![alt text](images/mpl.png "magma, inferno, plasma, and viridis")
 
 This library provides these colormaps as functions of type `Float -> Color`, where the floating point number should lie between 0 and 1.
 
 Interoperability with the `elm-css` Color type can be achieved easily as shown in the Css example in the xxx and the examples directory contains code for anything from ui elements to svg.
 
 There are helper functions that let you define your own colormaps, and more colormaps will be included in the future.
+
+## interop with elm-css
+
+Since Elm-Css currently has a different Color Type than the Base library, colors have to be converted if used for the former. This library does't provide that out of the box, in order to avoid a dependency that is not necessary for every user. Conversion can be achieven with the following function:
+
+```elm
+colorCoreToCss : Color.Color -> Css.Color
+colorCoreToCss c =
+    let
+        { red, green, blue, alpha } =
+            Color.toRgb c
+    in
+        Css.rgba red green blue alpha
+```
 
 ## todo, examples directory:
 
