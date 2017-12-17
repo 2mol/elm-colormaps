@@ -1,6 +1,5 @@
 module ExampleCustom exposing (customColormaps)
 
-import Dict exposing (Dict, fromList)
 import Color exposing (Color, hsl)
 import Color.Colormaps exposing (Colormap, fromData)
 
