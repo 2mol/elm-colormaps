@@ -30,7 +30,7 @@ colorCoreToCss c =
 
 ## Examples:
 
-The `examples` directory contains code illustrating all abovementioned functionality. Everything can be run at once by starting `elm-repl` from within that directory. It has some additional dependencies to the library itself.
+The `examples` directory contains code illustrating all abovementioned functionality. Everything can be run at once by starting `elm-reactor` from within that directory and opening `Main.elm`. It has some additional dependencies to the library itself.
 
 ## References:
 
