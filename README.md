@@ -10,9 +10,13 @@ This library simply provides these colormaps as functions of type `Float -> Colo
 
 To use, simply import `Color.Colormaps` and use the functions `magma`, `inferno`, `plasma`, and `viridis`.
 
-## Interop with clm-css
+## Custom colormaps
 
-Since `elm-css1 currently has a different Color Type than the Base library, colors have to be converted if used for the former. This library does't provide that out of the box, in order to avoid a dependency that is not necessary for every user. Conversion can be achieven with the following function:
+The library provides a function `fromData : List (Int, Int, Int)` that can be used to define custom colormaps from list of RGB tuples that range from 0 to 255 in value. An example for this can be found in the `examples/` directory.
+
+## Interop with elm-css
+
+Since `elm-css` currently has a different Color Type than the Base library, colors have to be converted if used for the former. This library does't provide that out of the box, in order to avoid a dependency that is not necessary for every user. Conversion can be achieven with the following function:
 
 ```elm
 colorCoreToCss : Color.Color -> Css.Color
@@ -26,7 +30,7 @@ colorCoreToCss c =
 
 ## Examples:
 
-The `examples` directory contains code illustrating
+The `examples` directory contains code illustrating all abovementioned functionality. Everything can be run at once by starting `elm-repl` from within that directory. It has some additional dependencies to the library itself.
 
 
 ## What are Colormaps
