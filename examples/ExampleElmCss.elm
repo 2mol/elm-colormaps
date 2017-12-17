@@ -9,6 +9,15 @@ import Html.Styled.Attributes exposing (css)
 import Css exposing (..)
 
 
+colorCoreToCss : Color.Color -> Css.Color
+colorCoreToCss c =
+    let
+        { red, green, blue, alpha } =
+            Color.toRgb c
+    in
+        Css.rgba red green blue alpha
+
+
 cssElements : List (CoreHtml.Html msg)
 cssElements =
     List.map toUnstyled cssElements_
@@ -19,15 +28,6 @@ cssElements_ =
     List.range 0 10
         |> List.map (\x -> x * 10)
         |> List.map drawPercentageBox
-
-
-colorCoreToCss : Color.Color -> Css.Color
-colorCoreToCss c =
-    let
-        { red, green, blue, alpha } =
-            Color.toRgb c
-    in
-        Css.rgba red green blue alpha
 
 
 percentageStyle : Css.Color -> Attribute msg
