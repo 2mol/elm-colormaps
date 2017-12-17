@@ -42,7 +42,7 @@ module Color.Colormaps
 
 -}
 
-import Dict exposing (Dict)
+import Dict exposing (Dict, fromList)
 import Color exposing (Color, rgb)
 import Color.Colormaps.Matplotlib as MPL
 
@@ -53,11 +53,14 @@ type alias Colormap =
 
 
 {-| -}
-fromData : Dict Int ( Int, Int, Int ) -> Colormap
-fromData colorData t =
+fromData : List ( Int, Int, Int ) -> Colormap
+fromData colorDataList t =
     let
+        colorDataDict =
+            dataToDict colorDataList
+
         keys =
-            colorData |> Dict.keys
+            colorDataDict |> Dict.keys
 
         mminKey =
             keys |> List.minimum
@@ -66,10 +69,10 @@ fromData colorData t =
             keys |> List.maximum
 
         mminColor =
-            mminKey |> Maybe.andThen (\k -> Dict.get k colorData)
+            mminKey |> Maybe.andThen (\k -> Dict.get k colorDataDict)
 
         mmaxColor =
-            mmaxKey |> Maybe.andThen (\k -> Dict.get k colorData)
+            mmaxKey |> Maybe.andThen (\k -> Dict.get k colorDataDict)
 
         mtScaled =
             mmaxKey
@@ -78,7 +81,7 @@ fromData colorData t =
                 |> Maybe.map round
 
         mcolorValue =
-            mtScaled |> Maybe.andThen (\k -> Dict.get k colorData)
+            mtScaled |> Maybe.andThen (\k -> Dict.get k colorDataDict)
     in
         case ( mcolorValue, mminColor, mmaxColor ) of
             ( Just ( r, g, b ), _, _ ) ->
@@ -94,6 +97,13 @@ fromData colorData t =
 
             _ ->
                 rgb 1 0 1
+
+
+dataToDict : List ( Int, Int, Int ) -> Dict Int ( Int, Int, Int )
+dataToDict tupleList =
+    tupleList
+        |> List.indexedMap (,)
+        |> fromList
 
 
 {-| -}

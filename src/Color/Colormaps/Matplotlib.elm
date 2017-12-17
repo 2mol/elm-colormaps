@@ -22,27 +22,25 @@ work. If not, see <http://creativecommons.org/publicdomain/zero/1.0/>.
 
 -}
 
-import Dict exposing (Dict, fromList)
 
-
-magmaData : Dict Int ( Int, Int, Int )
+magmaData : List ( Int, Int, Int )
 magmaData =
-    readMPLData magmaData_
+    List.map to256 magmaData_
 
 
-infernoData : Dict Int ( Int, Int, Int )
+infernoData : List ( Int, Int, Int )
 infernoData =
-    readMPLData infernoData_
+    List.map to256 infernoData_
 
 
-plasmaData : Dict Int ( Int, Int, Int )
+plasmaData : List ( Int, Int, Int )
 plasmaData =
-    readMPLData plasmaData_
+    List.map to256 plasmaData_
 
 
-viridisData : Dict Int ( Int, Int, Int )
+viridisData : List ( Int, Int, Int )
 viridisData =
-    readMPLData viridisData_
+    List.map to256 viridisData_
 
 
 to256 : ( Float, Float, Float ) -> ( Int, Int, Int )
@@ -52,14 +50,6 @@ to256 ( a, b, c ) =
             round (x * 255)
     in
         ( scale a, scale b, scale c )
-
-
-readMPLData : List ( Float, Float, Float ) -> Dict Int ( Int, Int, Int )
-readMPLData tupleList =
-    tupleList
-        |> List.map to256
-        |> List.indexedMap (,)
-        |> fromList
 
 
 magmaData_ : List ( Float, Float, Float )
