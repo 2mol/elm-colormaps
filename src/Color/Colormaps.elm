@@ -47,12 +47,17 @@ import Color exposing (Color, rgb)
 import Color.Colormaps.Matplotlib as MPL
 
 
-{-| -}
+{-| Type alias for a function that takes a floating point number (unsually in the range [0, 1]) and returns a Color.
+-}
 type alias Colormap =
     Float -> Color
 
 
-{-| -}
+{-| Gives a `Colormap` for a list of 3-tuples, where each element corresponds to an RGB value between (0, 0, 0) and (255, 255, 255).
+
+Note: the colors are currently not interpolated, so the resulting colormap is as coarse or fine-grained as there are datapoints.
+
+-}
 fromData : List ( Int, Int, Int ) -> Colormap
 fromData colorDataList t =
     let
