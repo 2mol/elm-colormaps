@@ -4,7 +4,7 @@
 
 For now it mainly provides a port of the four fantastic colormaps (magma, inferno, plasma, and viridis) that are included in matplotlib since version 1.5. They are perceptually uniform, colorblind friendly and can be printed out in grayscale with minimal loss of information.
 
-![magma, inferno, plasma, and viridis](images/matplotlib.png "magma, inferno, plasma, and viridis")
+![magma, inferno, plasma, and viridis](https://github.com/2mol/elm-colormaps/blob/master/images/matplotlib.png "magma, inferno, plasma, and viridis")
 
 This library simply provides these colormaps as functions of type `Float -> Color`, where the floating point number should lie between 0 and 1.
 
