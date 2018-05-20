@@ -4,9 +4,13 @@ import Color exposing (Color, hsl)
 import Color.Colormaps exposing (Colormap, fromData)
 
 
-customColormaps : List Colormap
+customColormaps : List ( String, Colormap )
 customColormaps =
-    [ customGrey, customRainbow, customPink, customRandomData ]
+    [ ( "gray", customGrey )
+    , ( "pink", customPink )
+    , ( "rainbow", customRainbow )
+    , ( "random", customRandomData )
+    ]
 
 
 customGrey : Float -> Color

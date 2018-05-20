@@ -30,7 +30,7 @@ colorCoreToCss c =
 
 ## Examples
 
-The `examples` directory contains code illustrating all abovementioned functionality. Everything can be run at once by starting `elm-reactor` from within that directory and opening `Main.elm`. It has some additional dependencies to the library itself.
+The `examples` directory contains code illustrating all abovementioned functionality. Everything can be run at once by starting `elm-reactor` from within that directory and opening `Example.elm`.
 
 ## References
 
@@ -44,4 +44,3 @@ https://matplotlib.org/users/colormaps.html
 https://matplotlib.org/users/whats_new.html#cividis-colormap
 
 https://matplotlib.org/gallery/color/colormap_reference.html
-

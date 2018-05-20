@@ -1,6 +1,7 @@
 module Color.Colormaps
     exposing
         ( Colormap
+        , cividis
         , fromData
         , inferno
         , magma
@@ -40,13 +41,18 @@ module Color.Colormaps
 
 @docs viridis
 
+
+# Cividis
+
+@docs cividis
+
 -}
 
 import Color.Internal as Internal
 import Color.Internal.Matplotlib as MPL
 
 
-{-| A Colormap is a function that takes a floating point number between 0 and 1 and returns a Color.
+{-| `Colormap` is an alias for `Float -> Color`, so it is simply a function that takes a floating point number between 0 and 1 and returns a Color.
 -}
 type alias Colormap =
     Internal.Colormap
