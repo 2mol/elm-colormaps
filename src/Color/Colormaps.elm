@@ -3,6 +3,10 @@ module Color.Colormaps
         ( Colormap
         , cividis
         , fromData
+        , fromFloatData
+        , fromFloatListData
+        , fromIntData
+        , fromIntListData
         , inferno
         , magma
         , plasma
@@ -20,6 +24,26 @@ module Color.Colormaps
 # fromData
 
 @docs fromData
+
+
+# fromIntData
+
+@docs fromIntData
+
+
+# fromIntListData
+
+@docs fromIntListData
+
+
+# fromFloatData
+
+@docs fromFloatData
+
+
+# fromFloatListData
+
+@docs fromFloatListData
 
 
 # Magma
@@ -60,7 +84,7 @@ type alias Colormap =
 
 {-| Gives a `Colormap` for a list of integer 3-tuples, where each element corresponds to an RGB value between (0, 0, 0) and (255, 255, 255).
 
-The colors will not get interpolated, so the resulting colormap is as coarse or fine-grained as the datapoints you provide.
+The colors will not get interpolated, so the resulting colormap is as coarse or fine-grained as the datapoints that are provided.
 
 -}
 fromData : List ( Int, Int, Int ) -> Colormap
@@ -75,7 +99,7 @@ fromIntData =
     Internal.fromIntData
 
 
-{-| Similar to `fromIntData`, for cases where the RGB values are provided as a list of lists. In this case the sublists are expected to contain 3 values.
+{-| Similar to `fromIntData`, for cases where the RGB values are provided as a list of lists. In this case the sublists are expected to contain 3 values, corresponding to the red, green and blue color channels.
 -}
 fromIntListData : List (List Int) -> Colormap
 fromIntListData =
@@ -89,7 +113,7 @@ fromFloatData =
     Internal.fromFloatData
 
 
-{-| The same as `fromIntListData` where the RGB values floating point numbers between 0 and 1..
+{-| The same functionality as `fromIntListData` where the RGB values floating point numbers between 0 and 1.
 -}
 fromFloatListData : List (List Float) -> Colormap
 fromFloatListData =
