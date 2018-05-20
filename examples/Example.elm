@@ -21,11 +21,12 @@ main =
     in
     div [ style [ ( "padding-left", "10px" ) ] ]
         [ Html.h1 [] [ text "Examples" ]
-        , Html.h2 [] [ text "Provided Colormaps" ]
+        , Html.h2 [ title ] [ text "Provided Colormaps" ]
+        , Html.h3 [] [ text "Matplotlib's perceptually uniform sequential colormaps:" ]
         , div [] <| List.map fullColormap colormaps
-        , Html.h2 [] [ text "Using elm-css" ]
+        , Html.h2 [ title ] [ text "Using elm-css" ]
         , div [] cssElements
-        , Html.h2 [] [ text "Custom Colormaps" ]
+        , Html.h2 [ title ] [ text "Custom Colormaps" ]
         , div [] <| List.map fullColormap customColormaps
         ]
 
@@ -60,7 +61,6 @@ wrapNicely name content =
                 , ( "margin", "3px" )
                 , ( "border-width", "1px" )
                 , ( "display", "inline-block" )
-                , ( "text-align", "right" )
                 ]
 
         labelStyle =
@@ -85,3 +85,7 @@ wrapNicely name content =
 
 colormapHeight =
     "32px"
+
+
+title =
+    style [ ( "margin-top", "40px" ) ]

@@ -41,6 +41,5 @@ https://bids.github.io/colormap/
 Some more information on the linearity of several colormaps, as well as some additional ones that might be interesting to port to Elm in the future:
 
 https://matplotlib.org/users/colormaps.html
-https://matplotlib.org/users/whats_new.html#cividis-colormap
 
 https://matplotlib.org/gallery/color/colormap_reference.html
