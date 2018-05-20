@@ -2,8 +2,8 @@ module Color.Colormaps
     exposing
         ( Colormap
         , fromData
-        , magma
         , inferno
+        , magma
         , plasma
         , viridis
         )
@@ -42,94 +42,79 @@ module Color.Colormaps
 
 -}
 
-import Dict exposing (Dict, fromList)
-import Color exposing (Color, rgb)
-import Color.Colormaps.Matplotlib as MPL
+import Color.Internal as Internal
+import Color.Internal.Matplotlib as MPL
 
 
-{-| Type alias for a function that takes a floating point number (unsually in the range [0, 1]) and returns a Color.
+{-| A Colormap is a function that takes a floating point number between 0 and 1 and returns a Color.
 -}
 type alias Colormap =
-    Float -> Color
+    Internal.Colormap
 
 
-{-| Gives a `Colormap` for a list of 3-tuples, where each element corresponds to an RGB value between (0, 0, 0) and (255, 255, 255).
+{-| Gives a `Colormap` for a list of integer 3-tuples, where each element corresponds to an RGB value between (0, 0, 0) and (255, 255, 255).
 
-Note: the colors are currently not interpolated, so the resulting colormap is as coarse or fine-grained as there are datapoints.
+The colors will not get interpolated, so the resulting colormap is as coarse or fine-grained as the datapoints you provide.
 
 -}
 fromData : List ( Int, Int, Int ) -> Colormap
-fromData colorDataList t =
-    let
-        colorDataDict =
-            dataToDict colorDataList
-
-        keys =
-            colorDataDict |> Dict.keys
-
-        mminKey =
-            keys |> List.minimum
-
-        mmaxKey =
-            keys |> List.maximum
-
-        mminColor =
-            mminKey |> Maybe.andThen (\k -> Dict.get k colorDataDict)
-
-        mmaxColor =
-            mmaxKey |> Maybe.andThen (\k -> Dict.get k colorDataDict)
-
-        mtScaled =
-            mmaxKey
-                |> Maybe.map toFloat
-                |> Maybe.map2 (*) (Just t)
-                |> Maybe.map round
-
-        mcolorValue =
-            mtScaled |> Maybe.andThen (\k -> Dict.get k colorDataDict)
-    in
-        case ( mcolorValue, mminColor, mmaxColor ) of
-            ( Just ( r, g, b ), _, _ ) ->
-                rgb r g b
-
-            ( Nothing, Just ( rMin, gMin, bMin ), Just ( rMax, gMax, bMax ) ) ->
-                if t < 0 then
-                    rgb rMin gMin bMin
-                else if t > 1 then
-                    rgb rMax gMax bMax
-                else
-                    rgb 1 0 1
-
-            _ ->
-                rgb 1 0 1
+fromData =
+    Internal.fromIntData
 
 
-dataToDict : List ( Int, Int, Int ) -> Dict Int ( Int, Int, Int )
-dataToDict tupleList =
-    tupleList
-        |> List.indexedMap (,)
-        |> fromList
+{-| The unambiguous name for `fromData`.
+-}
+fromIntData : List ( Int, Int, Int ) -> Colormap
+fromIntData =
+    Internal.fromIntData
+
+
+{-| Similar to `fromIntData`, for cases where the RGB values are provided as a list of lists. In this case the sublists are expected to contain 3 values.
+-}
+fromIntListData : List (List Int) -> Colormap
+fromIntListData =
+    Internal.fromIntListData
+
+
+{-| Similar to `fromIntData`, for cases where the RGB values are given as tuples of floating point numbers between 0 and 1.
+-}
+fromFloatData : List ( Float, Float, Float ) -> Colormap
+fromFloatData =
+    Internal.fromFloatData
+
+
+{-| The same as `fromIntListData` where the RGB values floating point numbers between 0 and 1..
+-}
+fromFloatListData : List (List Float) -> Colormap
+fromFloatListData =
+    Internal.fromFloatListData
 
 
 {-| -}
 magma : Colormap
 magma =
-    fromData MPL.magmaData
+    MPL.magma
 
 
 {-| -}
 inferno : Colormap
 inferno =
-    fromData MPL.infernoData
+    MPL.inferno
 
 
 {-| -}
 plasma : Colormap
 plasma =
-    fromData MPL.plasmaData
+    MPL.plasma
 
 
 {-| -}
 viridis : Colormap
 viridis =
-    fromData MPL.viridisData
+    MPL.viridis
+
+
+{-| -}
+cividis : Colormap
+cividis =
+    MPL.cividis

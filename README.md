@@ -6,7 +6,7 @@ For now it mainly provides a port of the four fantastic colormaps (magma, infern
 
 ![magma, inferno, plasma, and viridis](https://raw.githubusercontent.com/2mol/elm-colormaps/master/images/matplotlib.png)
 
-This library simply provides these colormaps as functions of type `Float -> Color`, where the floating point number should lie between 0 and 1.
+This library simply provides these colormaps as functions of type `Float -> Color`, where the input is expected to be between 0 and 1.
 
 To use, simply import `Color.Colormaps` and use the functions `magma`, `inferno`, `plasma`, and `viridis`.
 
@@ -16,7 +16,7 @@ The library provides a function `fromData : List (Int, Int, Int)` that can be us
 
 ## Interop with elm-css
 
-Since `elm-css` currently has a different Color type than the Base library, colors have to be converted if used for the former. This library does't provide that out of the box, in order to avoid a dependency that is not necessary for every user. Conversion can be achieved with the following function:
+Since `elm-css` currently has a different Color type than the Base library, colors from `Colormap` have to be converted. To keep dependencies to a minimum, `elm-colormaps` does not ship with a conversion function. However, it can easily be written as follows:
 
 ```elm
 colorCoreToCss : Color.Color -> Css.Color
@@ -28,11 +28,11 @@ colorCoreToCss c =
         Css.rgba red green blue alpha
 ```
 
-## Examples:
+## Examples
 
 The `examples` directory contains code illustrating all abovementioned functionality. Everything can be run at once by starting `elm-reactor` from within that directory and opening `Main.elm`. It has some additional dependencies to the library itself.
 
-## References:
+## References
 
 The original exposition on why and how the new Matplotlib colormaps were created. Highly recommended:
 
