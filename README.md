@@ -2,17 +2,13 @@
 
 `elm-colormaps` is a collection of high-quality colormaps that are intended for data visualization and scientific plotting.
 
-For now it mainly provides a port of the four fantastic colormaps (magma, inferno, plasma, and viridis) that are included in matplotlib since version 1.5. They are perceptually uniform, colorblind friendly and can be printed out in grayscale with minimal loss of information.
+For now it mainly provides a port of the five sequential colormaps (magma, inferno, plasma, viridis, and cividis) that are included in newer versions of matplotlib. These are perceptually uniform, colorblind friendly and can be printed out in grayscale with minimal loss of information.
 
-![magma, inferno, plasma, and viridis](https://raw.githubusercontent.com/2mol/elm-colormaps/master/images/matplotlib.png)
+![magma, inferno, plasma, viridis, and cividis](https://raw.githubusercontent.com/2mol/elm-colormaps/master/images/matplotlib.png)
 
-This library simply provides these colormaps as functions of type `Float -> Color`, where the input is expected to be between 0 and 1.
+This library provides these colormaps as functions of type `Float -> Color`, where the input is expected to be between 0 and 1.
 
-To use, simply import `Color.Colormaps` and use the functions `magma`, `inferno`, `plasma`, and `viridis`.
-
-## Custom colormaps
-
-The library provides a function `fromData : List (Int, Int, Int)` that can be used to define custom colormaps from list of RGB tuples that range from 0 to 255 in value. An example for this can be found in the `examples` directory.
+To use, just import `Color.Colormaps` and use the functions `magma`, `inferno`, `plasma`, `viridis`, and `cividis`.
 
 ## Interop with elm-css
 
@@ -28,9 +24,11 @@ colorCoreToCss c =
         Css.rgba red green blue alpha
 ```
 
-## Examples
+## Examples and custom colormaps
 
-The `examples` directory contains code illustrating all abovementioned functionality. Everything can be run at once by starting `elm-reactor` from within that directory and opening `Example.elm`.
+The `examples` directory contains code illustrating all abovementioned functionality. Run the code locally with `elm-reactor` and open `Example.elm`. Alternatively, take a look at the results at [https://2mol.github.io/elm-colormaps/](https://2mol.github.io/elm-colormaps/).
+
+The library also provides several helper functions that can be used to define custom colormaps from lists of RGB tuples. These are also included as examples.
 
 ## References
 
