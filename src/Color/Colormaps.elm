@@ -72,6 +72,7 @@ module Color.Colormaps
 
 -}
 
+import Color exposing (Color)
 import Color.Internal as Internal
 import Color.Internal.Matplotlib as MPL
 
@@ -79,7 +80,7 @@ import Color.Internal.Matplotlib as MPL
 {-| `Colormap` is an alias for `Float -> Color`, so it is simply a function that takes a floating point number between 0 and 1 and returns a Color.
 -}
 type alias Colormap =
-    Internal.Colormap
+    Float -> Color
 
 
 {-| Gives a `Colormap` for a list of integer 3-tuples, where each element corresponds to an RGB value between (0, 0, 0) and (255, 255, 255).

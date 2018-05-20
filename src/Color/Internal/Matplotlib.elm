@@ -23,30 +23,31 @@ work. If not, see <http://creativecommons.org/publicdomain/zero/1.0/>.
 
 -}
 
+import Color exposing (Color)
 import Color.Internal as I
 
 
-magma : I.Colormap
+magma : Float -> Color
 magma =
     I.fromFloatListData magmaData
 
 
-inferno : I.Colormap
+inferno : Float -> Color
 inferno =
     I.fromFloatListData infernoData
 
 
-plasma : I.Colormap
+plasma : Float -> Color
 plasma =
     I.fromFloatListData plasmaData
 
 
-viridis : I.Colormap
+viridis : Float -> Color
 viridis =
     I.fromFloatListData viridisData
 
 
-cividis : I.Colormap
+cividis : Float -> Color
 cividis =
     I.fromFloatListData cividisData
 

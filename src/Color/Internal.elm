@@ -1,7 +1,6 @@
 module Color.Internal
     exposing
-        ( Colormap
-        , fromFloatData
+        ( fromFloatData
         , fromFloatListData
         , fromIntData
         , fromIntListData
@@ -11,30 +10,27 @@ import Color exposing (Color, rgb)
 import Dict exposing (Dict)
 
 
-type alias Colormap =
-    Float -> Color
-
 
 
 -- conversion functions:
 
 
-fromFloatListData : List (List Float) -> Colormap
+fromFloatListData : List (List Float) -> Float -> Color
 fromFloatListData =
     convertListList >> List.map scaleto256 >> fromIntData
 
 
-fromFloatData : List ( Float, Float, Float ) -> Colormap
+fromFloatData : List ( Float, Float, Float ) -> Float -> Color
 fromFloatData =
     List.map scaleto256 >> fromIntData
 
 
-fromIntListData : List (List Int) -> Colormap
+fromIntListData : List (List Int) -> Float -> Color
 fromIntListData =
     convertListList >> fromIntData
 
 
-fromIntData : List ( Int, Int, Int ) -> Colormap
+fromIntData : List ( Int, Int, Int ) -> Float -> Color
 fromIntData colorDataList t =
     let
         colorDataDict =

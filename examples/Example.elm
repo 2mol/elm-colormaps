@@ -24,7 +24,7 @@ main =
         , Html.h2 [ title ] [ text "Provided Colormaps" ]
         , Html.h3 [] [ text "Matplotlib's perceptually uniform sequential colormaps:" ]
         , div [] <| List.map fullColormap colormaps
-        , Html.h2 [ title ] [ text "Using elm-css" ]
+        , Html.h2 [ title ] [ text "elm-css compatibility" ]
         , div [] cssElements
         , Html.h2 [ title ] [ text "Custom Colormaps" ]
         , div [] <| List.map fullColormap customColormaps
