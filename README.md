@@ -28,7 +28,7 @@ colorCoreToCss c =
 
 The `examples` directory contains code illustrating all abovementioned functionality. Run the code locally with `elm-reactor` and open `Example.elm`. Alternatively, take a look at the results at [https://2mol.github.io/elm-colormaps/](https://2mol.github.io/elm-colormaps/).
 
-The library also provides several helper functions that can be used to define custom colormaps from lists of RGB tuples. These are also included as examples.
+There are also examples included about how to use the various helper functions that can be used to define custom colormaps from lists of RGB tuples.
 
 ## References
 
