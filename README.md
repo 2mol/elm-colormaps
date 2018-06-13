@@ -1,6 +1,6 @@
 # Elm Colormaps
 
-`elm-colormaps` is a collection of high-quality colormaps that are intended for data visualization and scientific plotting.
+`elm-colormaps` is a collection of high-quality colormaps intended for data visualization and scientific plotting.
 
 For now it mainly provides a port of the five sequential colormaps (magma, inferno, plasma, viridis, and cividis) that are included in newer versions of matplotlib. These are perceptually uniform, colorblind friendly and can be printed out in grayscale with minimal loss of information.
 
